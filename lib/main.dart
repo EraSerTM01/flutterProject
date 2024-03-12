@@ -4,8 +4,20 @@ import 'user.dart';
 import 'dart:math';
 
 void main() {
+  print(myFunction(firstname: 'Oleksandr', date: 5, monthName: 'January'));
   runApp(const MyApp());
 }
+
+String myFunction(
+    {String firstname = 'User',
+      int? date,
+    required String monthName}) {
+  date ??= 1;
+  return '$firstname was born on $monthName $date.';
+}
+
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -48,6 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
     user2 = User.fromBirthYear(birthYear);
     randomString = '';
     user3 = User.withAdultAge('Oleg');
+    var names = <String>{user.name, user2.name, user3.name};
+    print('Created users names: ' + names.join(', '));
     print(user3.log('Hi, my name is ' + user3.name + '.' + ' I am adult.'));
     Function usersEatApple = user3.eatApple();
     usersEatApple();
